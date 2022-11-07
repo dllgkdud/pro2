@@ -51,6 +51,20 @@ create table product (
 	proPic2 varchar(200)
 );
 
+-- 카테고리테이블
+create table category(
+	cateNo int primary key auto_increment,
+	cateName varchar(50)
+);
+
+-- 카테고리 더미데이터
+insert into category(cateName) values ("베스트");
+insert into category(cateName) values ("티 제품");
+insert into category(cateName) values ("티푸드");
+insert into category(cateName) values ("티웨어");
+insert into category(cateName) values ("라이프스타일");
+select * from category;
+
 -- 판매테이블
 create table sales(
 	saleNo int primary key auto_increment,	
@@ -60,4 +74,20 @@ create table sales(
 	saleDate datetime default now(),
 	parselNo int,
 	salePayNo int
+);
+
+-- 배송테이블
+create table parsel(
+	parselNo int primary key auto_increment,
+    parselAddr varchar(500),
+    cusTel varchar(14),
+    parselCompany varchar(50),
+    parselTel varchar(14),
+    parselState int default 0
+);
+
+-- 입고테이블
+create table wearing(
+	proNo int primary key,
+    amount int
 );

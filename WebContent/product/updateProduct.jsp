@@ -49,7 +49,7 @@
 				</tr>
 				<tr>
 					<th>제품설명</th>
-					<td><textarea cols="100" rows="10" name="proSpec" id="proSpec" class="form-control" required><%=pro.getProSpec() %></textarea></td>
+					<td><textarea cols="100" rows="10" name="proSpec" id="proSpec" class="form-control" style="resize: none;" required><%=pro.getProSpec() %></textarea></td>
 				</tr>
 				<tr>
 					<th>제품가격</th>

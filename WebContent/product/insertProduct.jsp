@@ -41,7 +41,7 @@
 				</tr>
 				<tr>
 					<th>제품설명</th>
-					<td><textarea cols="80" rows="6" name="proSpec" id="proSpec" class="form-control" required></textarea></td>
+					<td><textarea cols="80" rows="6" name="proSpec" id="proSpec" class="form-control" style="resize: none;" required></textarea></td>
 				</tr>
 				<tr>
 					<th>제품가격</th>
@@ -62,8 +62,8 @@
 			</tbody>
 		</table>
 		<div class="btn-group">
-			<input type="submit" name="submit-btn" class="btn btn-info" value="제품 등록">
-			<input type="reset" name="reset-btn" class="btn btn-info" value="취소">
+			<input type="reset" name="reset-btn" class="btn btn-light" value="취소">
+			<input type="submit" name="submit-btn" class="btn btn-dark" value="제품 등록">			
 			<a href="<%=request.getContextPath() %>/GetProductListCtrl" class="btn btn-dark">목록으로</a>
 		</div>
 	</form>	
