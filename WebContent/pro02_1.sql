@@ -50,3 +50,14 @@ create table product (
 	proPic1 varchar(200),	
 	proPic2 varchar(200)
 );
+
+-- 판매테이블
+create table sales(
+	saleNo int primary key auto_increment,	
+	cusId varchar(13) not null,
+	proNo int not null,
+	amount int not null,	
+	saleDate datetime default now(),
+	parselNo int,
+	salePayNo int
+);
