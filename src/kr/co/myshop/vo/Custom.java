@@ -8,7 +8,6 @@ public class Custom {
 	private String tel;		//고객연락처
 	private String regDate;	//가입일
 	private int point;		//구매포인트
-	private int level;		//고객등급
 	private int visited;	//방문횟수
 	
 	
@@ -53,12 +52,6 @@ public class Custom {
 	}
 	public void setPoint(int point) {
 		this.point = point;
-	}
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
 	}
 	public int getVisited() {
 		return visited;

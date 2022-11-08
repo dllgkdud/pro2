@@ -52,7 +52,7 @@ public class GetCustomListCtrl extends HttpServlet {
 			request.setAttribute("cusList", cusList);
 			
 			//포워딩
-			RequestDispatcher view = request.getRequestDispatcher("./admin/customList/jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./admin/customList.jsp");
 			view.forward(request, response);
 			
 			rs.close();

@@ -20,49 +20,43 @@
 		<% if(sid!=null && sid.equals("admin")) { %>
 		<%@ include file="../admin/sideBar.jsp" %>
 		<% } %>
-		<% if(sid!=null && sid.equals("admin")) { %>
-		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-		<% } else { %>
-		<main class="content container">
-		<% } %>
-			<h2 class="title">구매상세내역</h2>
-			<table class="table">
-				<tbody>
-					<tr>
-						<th>구매번호</th>
-						<td><%=vo.getSaleNo() %></td>
-					</tr>
-					<tr>
-						<th>구매제품번호</th>
-						<td><%=vo.getProNo() %></td>
-					</tr>
-					<tr>
-						<th>구매수량</th>
-						<td><%=vo.getAmount() %></td>
-					</tr>
-					<tr>
-						<th>구매날짜</th>
-						<td><%=vo.getSaleDate() %></td>
-					</tr>
-					<tr>
-						<th>배송번호</th>
-						<td><%=vo.getParselNo() %></td>
-					</tr>
-					<tr>
-						<th>결제번호</th>
-						<td><%=vo.getProNo() %></td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="btn-group">
-				<a href="<%=request.getContextPath() %>/GetMemberSalesInfoCtrl" class="btn btn-danger">목록으로</a>
-				<% if(vo.getCusId().equals(sid) && vo.getParselState()==0) { %>
-				<a href="<%=request.getContextPath() %>/DeleteSalesCtrl?saleNo=<%=vo.getSaleNo() %>" class="btn btn-light">결제 취소</a>
-				<a href="<%=request.getContextPath() %>/UpdateSalesCtrl?parselNo=<%=vo.getParselNo() %>" class="btn btn-dark">배송 정보 수정</a>
-				<% } %>
-			</div>
-		</main>
-	</main>		
+		<h2 class="title">구매상세내역</h2>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>구매번호</th>
+					<td><%=vo.getSaleNo() %></td>
+				</tr>
+				<tr>
+					<th>구매제품번호</th>
+					<td><%=vo.getProNo() %></td>
+				</tr>
+				<tr>
+					<th>구매수량</th>
+					<td><%=vo.getAmount() %></td>
+				</tr>
+				<tr>
+					<th>구매날짜</th>
+					<td><%=vo.getSaleDate() %></td>
+				</tr>
+				<tr>
+					<th>배송번호</th>
+					<td><%=vo.getParselNo() %></td>
+				</tr>
+				<tr>
+					<th>결제번호</th>
+					<td><%=vo.getProNo() %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="btn-group">
+			<a href="<%=request.getContextPath() %>/GetMemberSalesInfoCtrl" class="btn btn-light">목록으로</a>
+			<% if(vo.getCusId().equals(sid) && vo.getParselState()==0) { %>
+			<a href="<%=request.getContextPath() %>/DeleteSalesCtrl?saleNo=<%=vo.getSaleNo() %>" class="btn btn-light">결제취소</a>
+			<a href="<%=request.getContextPath() %>/UpdateSalesCtrl?parselNo=<%=vo.getParselNo() %>" class="btn btn-dark">배송정보수정</a>
+			<% } %>
+		</div>
+	</div>	
 </div>
 <%@ include file="../footer.jsp" %>
 </body>
