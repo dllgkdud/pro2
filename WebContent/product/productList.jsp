@@ -27,7 +27,7 @@
 			  <div class="card-body">
 			    <h5 class="card-title"><%=pro.getProName() %></h5>
 			    <p class="card-text"><%=pro.getProSpec() %></p>
-			    <p class="card-text"><strong style="color:red;"><%=pro.getProPrice() %>원</strong> (<del><%=pro.getCost() %>)</del></p>
+			    <p class="card-text"><strong style="font-size: 20px;"><%=pro.getProPrice() %>원</strong>&nbsp;<span style="color: #ccc;">(<del><%=pro.getCost() %>원)</del></span></p>
 			    <a href="<%=request.getContextPath() %>/GetProductDetailCtrl?proNo=<%=pro.getProNo() %>" class="btn btn-light">제품 상세보기</a>
 			  </div>
 			</div>

@@ -4,6 +4,9 @@
 	String sid = (String) session.getAttribute("sid");
 	String sname = (String) session.getAttribute("sname");
 %>
+<style>
+ul, ul li { list-style:none; }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="in_container"> 
 	  <a class="navbar-brand" id="logo" href="index.jsp">OSULLOC</a>

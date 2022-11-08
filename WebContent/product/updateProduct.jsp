@@ -24,9 +24,9 @@
 				<tr>
 					<th>상품분류</th>
 					<td>
-						<p>현재 상품 코드 : <%=pro.getCateNo() %></p>
+						<p>상품코드 : <%=pro.getCateNo() %></p>
 						<input type="hidden" name="cateNo" id="cateNo" value="<%=pro.getCateNo() %>">
-						변경할 상품 코드 :
+						변경상품코드 :
 						<select name="updateCateNo" id="updateCateNo" onchange="updateCategory()" class="custom-select custom-select-lg mb-3">
 							<option value="" selected>선택안함</option>
 							<% 

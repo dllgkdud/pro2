@@ -15,7 +15,7 @@ create table custom(
     point int default 0,
     visited int default 0
 );
-select * from notice;
+select * from product;
 
 -- 수정사항(고객등급책정)
 alter table custom modify point int default 1;
@@ -44,12 +44,18 @@ create table product (
 	cateNo int not null,	
 	proName varchar(40),		
 	proSpec varchar(500),	
-	costPrice int not null,		
-	disRate double not null,	
+	cost int not null,		
+	discountRate double not null,	
 	proPrice int not null,
 	proPic1 varchar(200),	
 	proPic2 varchar(200)
 );
+
+-- 수정사항(sql syntax)
+alter table product rename column costPrice to cost;
+alter table product rename column disRate to discountRate;
+alter table product rename column proPic1 to proPic;
+alter table product modify proPrice int;
 
 -- 카테고리테이블
 create table category(
@@ -81,10 +87,13 @@ create table parsel(
 	parselNo int primary key auto_increment,
     parselAddr varchar(500),
     cusTel varchar(14),
-    parselCompany varchar(50),
+    parselCom varchar(50),
     parselTel varchar(14),
     parselState int default 0
 );
+
+-- 추가데이터(배송조회)
+alter table parsel add parselUrl varchar(200);
 
 -- 입고테이블
 create table wearing(
