@@ -14,6 +14,11 @@
 <%@ include file="../header.jsp" %>
 <%
 	Product vo = (Product) request.getAttribute("pro");
+	if(sid!=null) {
+		sid = sid;
+	} else {
+		sid = "guest";
+	}
 %>
 <div class="content container" id="content">
 	<h2 class="title">제품 상세보기</h2>
@@ -21,7 +26,10 @@
 		<tbody>
 			<tr>
 				<th>제품이미지</th>
-				<td><img src="<%=request.getContextPath() %>/upload/<%=vo.getProPic() %>" alt="<%=vo.getProName() %>"></td>
+				<td>
+					<img src="<%=request.getContextPath() %>/upload/<%=vo.getProPic() %>" alt="<%=vo.getProName() %>"><br>
+					<img src="<%=request.getContextPath() %>/upload/<%=vo.getProPic2() %>" alt="<%=vo.getProName() %>">
+				</td>
 			</tr>
 			<tr>
 				<th>제품번호</th>
@@ -59,14 +67,14 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="<%=request.getContextPath() %>/GetProductListCtrl" class="btn btn-danger">목록으로</a>
+		<a href="<%=request.getContextPath() %>/GetProductListCtrl" class="btn btn-light">목록으로</a>
 		<% if(sid.equals("admin")) { %>
 		<a href="<%=request.getContextPath() %>/DeleteProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품삭제</a>
-		<a href="<%=request.getContextPath() %>/UpdateProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-light">제품정보수정</a>
+		<a href="<%=request.getContextPath() %>/UpdateProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품정보수정</a>
 		<a href="<%=request.getContextPath() %>/GetProductWearingCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품입고</a>
 		<% } %>
 		<% if(vo.getAmount()!=0) { %>
-		<a href="<%=request.getContextPath() %>/GetSalesProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-light">제품구매</a>
+		<a href="<%=request.getContextPath() %>/GetSalesProductCtrl?proNo=<%=vo.getProNo() %>" class="btn btn-dark">제품구매</a>
 		<% } %>
 	</div>
 </div>

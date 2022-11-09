@@ -20,7 +20,7 @@
 		<% if(sid!=null && sid.equals("admin")) { %>
 		<%@ include file="../admin/sideBar.jsp" %>
 		<% } %>
-		<h2 class="title">구매상세내역</h2>
+		<h2 class="title">구매내역상세</h2>
 		<table class="table">
 			<tbody>
 				<tr>
@@ -36,7 +36,7 @@
 					<td><%=vo.getAmount() %></td>
 				</tr>
 				<tr>
-					<th>구매날짜</th>
+					<th>구매일</th>
 					<td><%=vo.getSaleDate() %></td>
 				</tr>
 				<tr>
@@ -53,28 +53,24 @@
 							<% if(vo.getParselState()==0) { %>
 							<span>배송준비</span>
 							<% } else if(vo.getParselState()==1) { %>
-							<span>배송시작</span>
+							<span>배송출발</span>
 							<% } else if(vo.getParselState()==2) { %>
 							<span>배송도착</span>
 							<% } else if(vo.getParselState()==3) { %>
 							<span>구매결정</span>
-							<% } %>
-							<%
-							Parsel parsel = new Parsel();
-							%>
-							<% if(vo.getParselState()!=0) { %>
-							<a href="<%=parsel.getParselUrl(vo.getParselCom()) %>=<%=vo.getParselNo() %>" target="_blank"><%=vo.getParselCom() %>배송조회</a>	
-							<% } %>	
+							<% } else { %>
+								<span>점검중</span>
+								<% } %>
 						</td>
 					</tr>
 			</tbody>
 		</table>
 		<div class="btn-group">
 			<a href="<%=request.getContextPath() %>/GetMemberSalesInfoCtrl" class="btn btn-light">목록으로</a>
-			<% if(vo.getCusId().equals(sid) && vo.getParselState()==0) { %>
-			<a href="<%=request.getContextPath() %>/DeleteSalesCtrl?saleNo=<%=vo.getSaleNo() %>" class="btn btn-light">결제취소</a>
-			<a href="<%=request.getContextPath() %>/UpdateSalesCtrl?parselNo=<%=vo.getParselNo() %>" class="btn btn-dark">배송정보수정</a>
+			<% if(vo.getParselState()==0) { %>
+				<a href="<%=request.getContextPath() %>/DeleteSalesCtrl?saleNo=<%=vo.getSaleNo() %>" class="btn btn-dark">결제원격취소</a>
 			<% } %>
+			<a href="<%=request.getContextPath() %>/UpdateParselCtrl?parselNo=<%=vo.getParselNo() %>" class="btn btn-dark">배송정보수정</a>
 		</div>
 	</div>	
 </div>

@@ -17,7 +17,7 @@
 %>
 <div class="content container" id="content">
 	<h2 class="title">제품 입고</h2>
-	<form name="frm1" id="frm1" action="ProductWearingCtrl" method="post">
+	<form name="frm" id="frm" action="ProductWearingCtrl" method="post">
 		<table class="table">
 			<tbody>
 				<tr>
@@ -39,7 +39,7 @@
 					<td><%=vo.getProName() %></td>
 				</tr>
 				<tr>
-					<th><strong style="color:red">입고수량</strong></th>
+					<th><strong>입고수량</strong></th>
 					<td>
 						<input type="number" name="amount" id="amount" class="form-control" />
 					</td>

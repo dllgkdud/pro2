@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,13 @@ public class UpdateParselCtrl extends HttpServlet {
 				vo.setBaleCode(rs.getString("balecode"));
 			}
 			request.setAttribute("parsel", vo);
+			
+			RequestDispatcher view = request.getRequestDispatcher("./parsel/updateParsel.jsp");
+			view.forward(request, response);
+			
+			rs.close();
+			pstmt.close();
+			con.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

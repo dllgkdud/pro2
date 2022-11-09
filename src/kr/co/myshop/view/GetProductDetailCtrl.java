@@ -31,11 +31,9 @@ public class GetProductDetailCtrl extends HttpServlet {
 		try {
 			Class.forName(DRIVER);
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
-			sql = "select a.prono, a.cateno, a.proname, a.prospec, a.cost, ";			
-			sql = sql + "a.discountrate, a.propic, a.propic2, b.amount from ";
+			sql = "select a.prono, a.cateno, a.proname, a.prospec, a.cost, a.discountrate, a.propic, a.propic2, b.amount from ";
 			sql = sql + "product a right join wearing b on a.prono=b.prono ";
-			sql = sql + "where a.prono in (select b.prono from wearing) and ";
-			sql = sql + "a.prono=?";
+			sql = sql + "where a.prono in (select b.prono from wearing) and a.prono=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, proNo);
 			ResultSet rs = pstmt.executeQuery();

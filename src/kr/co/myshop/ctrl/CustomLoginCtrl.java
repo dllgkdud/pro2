@@ -52,16 +52,17 @@ public class CustomLoginCtrl extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			if(rs.next()){
-/*				//로그인 성공 시, 방문횟수를 증가하고, 로그인 포인트를 3점씩 지급
-				sql = "update custom set visited=visited+1, point=point+3 where cusId=?";
-				pstmt.setString(1, cusId);
-				pstmt.executeLargeUpdate();
-				con.commit();
-				con.setAutoCommit(true);
-				*/
+				//로그인 성공 시, 방문횟수를 증가하고, 로그인 포인트를 3점씩 지급(포인트는 나중에 적용)
+				//sql = "update custom set visited=visited+1 where cusId=?";
+				//pstmt.setString(1, cusId);
+				//pstmt.executeUpdate();
+				//con.commit();
+				//con.setAutoCommit(true);
+				
 				session.setAttribute("sid", cusId);
 				session.setAttribute("sname",rs.getString("cusName"));
 				response.sendRedirect("index.jsp");
+				
 			} else {
 				response.sendRedirect("./custom/login.jsp");
 			}

@@ -30,15 +30,16 @@ public class GetSalesDetailCtrl extends HttpServlet {
 		try {
 			//데이터베이스 연결
 			Class.forName(DRIVER);
-			sql = "select a.saleno, a.cusid, a.prono, a.amount, a.saledate, a.parselno, a.salepayno, b.parselstate from sales a inner join parsel b on a.parselno=b.parselno where a.saleno=?";
+			sql = "select a.saleno, a.cusid, a.prono, a.amount, a.saledate, a.parselno, a.salepayno, b.parselstate, b.parselcom from sales a inner join parsel b on a.parselno=b.parselno where a.saleno=?";
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			
-			con.setAutoCommit(false);	//트랜잭션 처리시에는 같이 처리될 수 있도록 오토커밋을 꺼야함
+			//오토커밋 오프
+			con.setAutoCommit(false);
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, saleNo);
 			ResultSet rs = pstmt.executeQuery();
 			
-			//결과를 데이터베이스로 부터 받아서 VO에 저장
+			//데이터베이스로부터 받은 결과를 저장
 			Sales vo = new Sales();
 			if(rs.next()){
 				vo.setSaleNo(rs.getInt("saleno"));
@@ -49,6 +50,7 @@ public class GetSalesDetailCtrl extends HttpServlet {
 				vo.setParselNo(rs.getInt("parselno"));
 				vo.setSalePayNo(rs.getInt("salepayno"));
 				vo.setParselState(rs.getInt("parselstate"));
+				vo.setParselCom(rs.getString("parselcom"));
 			}
 			request.setAttribute("sales", vo);
 			

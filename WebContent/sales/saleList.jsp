@@ -10,15 +10,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="common.css">
-<style>
-.title { padding-top:36px; padding-bottom:20px; }
-</style>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
 <%
-	List<Sales> saleList = (ArrayList<Sales>) request.getAttribute("saleList");
+	List<Sales> salesList = (ArrayList<Sales>) request.getAttribute("salesList");
 %>
 <div class="container-fluid" id="content">
 	<div class="row" id="content_row">
@@ -29,15 +25,15 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>연번</th><th>제목</th><th>작성일</th>
+					<th>연번</th><th>구매내역</th><th>구매일</th>
 				</tr>
 			</thead>
 			<tbody>
-			<% for(int i=0;i<saleList.size();i++){
-				Sales vo = saleList.get(i);
+			<% for(int i=0;i<salesList.size();i++){
+				Sales vo = salesList.get(i);
 			%>
 			<tr>
-				<td><%=saleList.size()-i %></td>
+				<td><%=salesList.size()-i %></td>
 				<td><a href="<%=request.getContextPath() %>/GetSalesDetailCtrl?saleNo=<%=vo.getSaleNo() %>"><%=vo.getProNo() %></a></td>
 				<td><%=vo.getSaleDate() %></td>
 			</tr>

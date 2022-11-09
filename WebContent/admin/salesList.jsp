@@ -24,29 +24,31 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>연번</th><th>판매 제품 코드</th><th>판매일</th><th>배송상태</th>
+					<th>번호</th><th>판매제품코드</th><th>판매일</th><th>배송상태</th>
 				</tr>
 			</thead>
 			<tbody>
 			<% for(int i=0;i<saleList.size();i++){
-				Sales vo = saleList.get(i);
+						Sales vo = saleList.get(i);
 			%>
-			<tr>
-				<td><%=saleList.size()-i %></td>
-				<td><a href="<%=request.getContextPath() %>/GetAdminSalesDetailCtrl?saleNo=<%=vo.getSaleNo() %>"><%=vo.getProNo() %></a></td>
-				<td><%=vo.getSaleDate() %></td>
-				<td>
-					<% if(vo.getParselState()==0) { %>
-					<span>배송준비</span>
-					<% } else if(vo.getParselState()==1) { %>
-					<span>배송시작</span>
-					<% } else if(vo.getParselState()==2) { %>
-					<span>제품도착</span>
-					<% } else if(vo.getParselState()==3) { %>
-					<span>구매결정</span>
-					<% } %>
-				</td>
-			</tr>
+						<tr>
+							<td><%=saleList.size()-i %></td>
+							<td><a href="<%=request.getContextPath() %>/GetAdminSalesDetailCtrl?saleNo=<%=vo.getSaleNo() %>"><%=vo.getProNo() %></a></td>
+							<td><%=vo.getSaleDate() %></td>
+							<td>
+								<% if(vo.getParselState()==0) { %>
+								<span>배송준비</span>
+								<% } else if(vo.getParselState()==1) { %>
+								<span>배송시작</span>
+								<% } else if(vo.getParselState()==2) { %>
+								<span>제품도착</span>
+								<% } else if(vo.getParselState()==3) { %>
+								<span>구매결정</span>
+								<% }  else {%>
+								<span>점검중</span>
+								<% } %>
+							</td>
+						</tr>
 			<% } %>	
 			</tbody>
 		</table>

@@ -15,6 +15,7 @@ create table custom(
     point int default 0,
     visited int default 1
 );
+desc custom;
 select * from custom;
 
 -- 수정사항(고객등급책정)
@@ -83,6 +84,15 @@ create table sales(
 	salePayNo int
 );
 
+-- 결제테이블
+create table payment(
+	salePayNo int primary key auto_increment,
+    payMethod varchar(20),
+    payCom varchar(50),
+    cardNum varchar(40),
+    payAmount int
+);
+
 -- 배송테이블
 create table parsel(
 	parselNo int primary key auto_increment,
@@ -95,11 +105,19 @@ create table parsel(
 
 -- 추가데이터(배송조회)
 alter table parsel add parselUrl varchar(200);
+alter table parsel add baleCode varchar(500);
 
 -- 입고테이블
 create table wearing(
 	proNo int primary key,
     amount int
+);
+
+-- 장바구니테이블
+create table cart(
+	cartNo int primary key auto_increment,
+    proNo int,
+    cusId varchar(13)
 );
 
 -- 질문과 답변테이블

@@ -42,9 +42,9 @@
 			</tbody>
 		</table>
 		<div class="btn-group">
-			<input type="submit" name="submit-btn" class="btn btn-info" value="배송 정보 변경">
-			<input type="reset" name="reset-btn" class="btn btn-info" value="취소">
-			<a href="<%=request.getContextPath() %>/GetMemberSalesInfoCtrl" class="btn btn-danger">목록으로</a>
+			<a href="<%=request.getContextPath() %>/GetMemberSalesInfoCtrl" class="btn btn-light">목록으로</a>
+			<input type="reset" name="reset-btn" class="btn btn-light" value="취소">					
+			<input type="submit" name="submit-btn" class="btn btn-dark" value="배송정보변경">
 		</div>
 	</form>	
 	<script>

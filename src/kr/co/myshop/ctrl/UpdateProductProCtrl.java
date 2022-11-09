@@ -27,7 +27,7 @@ public class UpdateProductProCtrl extends HttpServlet {
     int cnt = 0;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String uploadPath = "D:\\kim6\\pro01\\pro02\\WebContent\\upload";
+		//String uploadPath = "D:\\lhy\\pro01\\pro2\\WebContent\\upload";
 		String uploadPath = request.getRealPath("/upload");
 		
 		 System.out.println(uploadPath);
@@ -83,7 +83,7 @@ public class UpdateProductProCtrl extends HttpServlet {
 					pstmt.setString(7, proPic2);
 					pstmt.setInt(8, proNo);
 					cnt = pstmt.executeUpdate();
-					if(cnt>=1){
+					if(cnt>0){
 						response.sendRedirect("GetProductListCtrl");
 					} else {
 						response.sendRedirect("UpdateProductCtrl?proNo="+proNo);

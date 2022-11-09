@@ -58,7 +58,7 @@ public class UpdateProductCtrl extends HttpServlet {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			//결과를 데이터베이스로 부터 받아서 리스트로 저장
+			//데이터베이스로부터 파생된 결과를 리스트로 저장
 			List<Category> cateList = new ArrayList<Category>();
 			while(rs.next()){
 				Category cate = new Category();

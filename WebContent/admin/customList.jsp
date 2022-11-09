@@ -18,7 +18,7 @@
 <div class="container-fluid" id="content">
 <div class="row" id="content_row">
     <%@ include file="sideBar.jsp" %>
-    <h2 class="title">공지사항 목록</h2>
+    <h2 class="title">회원목록</h2>
 	<table class="table">
 		<thead>
 			<tr>

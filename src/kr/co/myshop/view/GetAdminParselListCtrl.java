@@ -15,47 +15,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.myshop.vo.Product;
+import kr.co.myshop.vo.Parsel;
 
 
-@WebServlet("/GetProductItemListCtrl")
-public class GetProductItemListCtrl extends HttpServlet {
+@WebServlet("/GetAdminParselListCtrl")
+public class GetAdminParselListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String URL = "jdbc:mysql://localhost:3306/myshop?serverTimezone=Asia/Seoul";
 	private final static String USER = "root";
 	private final static String PASS = "a1234";
-	String sql = "";   
+	String sql = "";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int cateNo = Integer.parseInt(request.getParameter("cateNo"));
 		try {
-			//데이터베이스 연결
 			Class.forName(DRIVER);
-			sql = "select * from product where cateno=? order by prono";
+			sql = "select * from parsel order by parselstate, parselno";
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, cateNo);
 			ResultSet rs = pstmt.executeQuery();
 			
-			//데이터베이스에서 받은 결과를 리스트로 저장
-			List<Product> proList = new ArrayList<Product>();
+			List<Parsel> parList = new ArrayList<Parsel>();
 			while(rs.next()){
-				Product vo = new Product();
-				vo.setProNo(rs.getInt("prono"));
-				vo.setCateNo(rs.getInt("cateno"));
-				vo.setProName(rs.getString("proname"));
-				vo.setProSpec(rs.getString("prospec"));
-				vo.setCost(rs.getInt("cost"));
-				vo.setDiscountRate(rs.getDouble("discountrate"));
-				vo.setProPic(rs.getString("propic"));
-				vo.setProPic(rs.getString("propic2"));
-				proList.add(vo);
+				Parsel vo = new Parsel();
+				vo.setParselNo(rs.getInt("parselno"));
+				vo.setParselAddr(rs.getString("parseladdr"));
+				vo.setCusTel(rs.getString("custel"));
+				vo.setParselCom(rs.getString("parselcom"));
+				vo.setParselTel(rs.getString("parseltel"));
+				vo.setParselState(rs.getInt("parselstate"));
+				vo.setBaleCode(rs.getString("balecode"));
+				parList.add(vo);
 			}
-			request.setAttribute("proList", proList);
+			request.setAttribute("parList", parList);
 			
-			//포워딩
-			RequestDispatcher view = request.getRequestDispatcher("./product/productList.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./parsel/parselList.jsp");
 			view.forward(request, response);
 			
 			rs.close();
@@ -66,4 +60,5 @@ public class GetProductItemListCtrl extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
 }
